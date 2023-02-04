@@ -1,0 +1,13 @@
+# Google API Client sdk
+vendor/
+# Composer configs
+composer.*
+
+# Google Cloud console Client Secrets
+credentials.json
+
+*.png
+
+index.copy.php
+
+auth/
