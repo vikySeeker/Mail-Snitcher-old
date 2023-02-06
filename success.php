@@ -23,9 +23,8 @@ if (isset($_GET['code'])) {
       'verifiedEmail' => $google_account_info['verifiedEmail'],
       'token' => $google_account_info['id'],
     ];
-    $token = $userinfo['token'];
     // save user data into session
-    $_SESSION['user_token'] = $token;
+    $_SESSION['user_token'] = $token['access_token'];
 } else {
     if (!isset($_SESSION['user_token'])) {
         header("Location: index.php");
