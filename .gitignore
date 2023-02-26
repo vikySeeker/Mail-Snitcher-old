@@ -6,8 +6,7 @@ composer.*
 # Google Cloud console Client Secrets
 credentials.json
 
-*.png
+# others
+others/
 
-index.copy.php
-
-auth/
+styles/

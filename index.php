@@ -1,7 +1,7 @@
 <?php
-require_once 'config.php';
+require_once __DIR__.'/__configs/google/config.php';
 if (isset($_SESSION['user_token'])) {
-    header("Location: success.php");
+    header("Location: app");
 }
 ?>
 <!DOCTYPE html>
@@ -11,19 +11,38 @@ if (isset($_SESSION['user_token'])) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Mail Snitcher</title>
+	<title>Document</title>
+	<link rel="stylesheet" href="/styles/">
+
 </head>
 
 <body>
-	<h1>Welcome to Mail Snitcher</h1>
-	<p>The mail notifier that tells you about new incoming email that you don't wanna miss!</p><br>
-	<p>Get notified about your emails straight through your whatsapp and telegram messages.</p><br>
-	<p>See, handling multiple email accounts is a tedious task! and also with that terrible email notifcations the might
-		be
-		times when you missed your important email due to poor notifications.</p><br>
-	<p>with <strong>Mail Snitcher</strong> responding to your important emails made more faster, our service gives you
-		notification as messages on the messaging platforms that you use often eg. whatsapp and telegram.</p><br>
-	<a href="/login"><strong>Continue with Google</strong></a>
+
+	<div class="container">
+		<div class="loginpage"></div>
+		<div class="content">
+			<h1> Mail Snitcher</h1>
+			<h4>Welcome To Mail Snitcher...</h4>
+			<div class="btn"><a href="/login/google/" class="google">
+					<button><img src="/styles/images/icons8-google-48.png"><span>Sing In With Google</span>
+					</button>
+				</a>
+
+				<a href="#" class="yahoo">
+					<button><img src="/styles/images/icons8-yahoo-48.png"><span>Sing In With Yahoo</span>
+					</button>
+				</a>
+
+				<a href="#" class="microsoft">
+					<button><img src="/styles/images/icons8-microsoft-48.png"><span>Sing In With Microsoft</span>
+					</button>
+				</a>
+
+			</div>
+
+		</div>
+	</div>
+
 </body>
 
 </html>

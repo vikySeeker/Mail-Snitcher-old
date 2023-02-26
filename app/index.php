@@ -1,17 +1,23 @@
 <?php
-require_once 'config.php';
+require_once __DIR__.'/../__configs/google/config.php';
 
-use Google\Client;
-use Google\Service\Oauth2;
-use Google\Service\Gmail;
+class user
+{
+    public $token;
+    public $client;
+    public $google_oauth;
+    public $google_account_info;
+    public $userinfo;
+}
 
+$newUser = new user();
 // authenticate code from Google OAuth Flow
 if (isset($_GET['code'])) {
     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     $client->setAccessToken($token['access_token']);
 
     // get profile info
-    $google_oauth = new Google_Service_Oauth2($client);
+    $google_oauth = new Google\Service\Oauth2($client);
     $google_account_info = $google_oauth->userinfo->get();
     $userinfo = [
       'email' => $google_account_info['email'],
@@ -25,12 +31,27 @@ if (isset($_GET['code'])) {
     ];
     // save user data into session
     $_SESSION['user_token'] = $token['access_token'];
-} else {
-    if (!isset($_SESSION['user_token'])) {
-        header("Location: index.php");
-        echo "redirect";
-        die();
-    }
+} /*elseif ($_SESSION['user_token']) {
+    // $client->setAccessToken($_SESSION['user_token']);
+
+    // // get profile info
+    // $google_oauth = new Google\Service\Oauth2($client);
+    // $google_account_info = $google_oauth->userinfo->get();
+
+    // $userinfo = [
+    //     'email' => $google_account_info['email'],
+    //     'first_name' => $google_account_info['givenName'],
+    //     'last_name' => $google_account_info['familyName'],
+    //     'gender' => $google_account_info['gender'],
+    //     'full_name' => $google_account_info['name'],
+    //     'picture' => $google_account_info['picture'],
+    //     'verifiedEmail' => $google_account_info['verifiedEmail'],
+    //     'token' => $google_account_info['id'],
+    //   ];
+}*/ elseif (!isset($_SESSION['user_token'])) {
+    header("Location: http://localhost/login/google/");
+    echo "redirect";
+    die();
 }
 
 ?>
