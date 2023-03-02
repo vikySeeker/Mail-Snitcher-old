@@ -1,50 +1,17 @@
 <?php
-/* $data = <<<jsonData
-    "ok": true,
-    "result": [
-        {
-            "update_id": 496519153,
-            "message": {
-                "message_id": 10,
-                "from": {
-                    "id": 942136206,
-                    "is_bot": false,
-                    "first_name": "Viky",
-                    "username": "vignesh_magalingam",
-                    "language_code": "en"
-                },
-                "chat": {
-                    "id": 942136206,
-                    "first_name": "Viky",
-                    "username": "vignesh_magalingam",
-                    "type": "private"
-                },
-                "date": 1676022416,
-                "text": "/show_new_mail",
-                "entities": [
-                    {
-                        "offset": 0,
-                        "length": 14,
-                        "type": "bot_command"
-                    }
-                ]
-            }
-        }
-    ]
-});
-jsonData; */
-require '../vendor/autoload.php';
+
+require_once __DIR__."/../__configs/telegram/config.php";
 
 use Telegram\Bot\Api;
 
-$token = "5800666028:AAGspF2LnprvX9D4IPtD_1LlKV0_nlMvARM";
+$token = Telegram::getToken();
 $base_url = "https://api.telegram.com/bot".$token;
 
 $telegram = new Api($token);
 
 $data=file_get_contents("php://input");
 if (!$data) {
-    echo "hi, no message found!";
+    echo "Error Occured";
     die();
 }
 
@@ -85,3 +52,39 @@ switch($message) {
 }
 
 die();
+
+
+/* $data = <<<jsonData
+    "ok": true,
+    "result": [
+        {
+            "update_id": 496519153,
+            "message": {
+                "message_id": 10,
+                "from": {
+                    "id": 942136206,
+                    "is_bot": false,
+                    "first_name": "Viky",
+                    "username": "vignesh_magalingam",
+                    "language_code": "en"
+                },
+                "chat": {
+                    "id": 942136206,
+                    "first_name": "Viky",
+                    "username": "vignesh_magalingam",
+                    "type": "private"
+                },
+                "date": 1676022416,
+                "text": "/show_new_mail",
+                "entities": [
+                    {
+                        "offset": 0,
+                        "length": 14,
+                        "type": "bot_command"
+                    }
+                ]
+            }
+        }
+    ]
+});
+jsonData; */

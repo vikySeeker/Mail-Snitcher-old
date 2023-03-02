@@ -1,10 +1,12 @@
 <?php
 
-    require 'vendor/autoload.php';
+    require __DIR__.'/../vendor/autoload.php';
+    require_once __DIR__.'/../__configs/telegram/config.php';
     use Telegram\Bot\Api;
     use Telegram\Bot\Laravel\Facades\Telegram;
 
-    $telegram = new Api('5800666028:AAGspF2LnprvX9D4IPtD_1LlKV0_nlMvARM');
+    $token = Telegram::getToken();
+    $telegram = new Api($token);
 
     $response = $telegram->getMe();
     $botId = $response->getId();

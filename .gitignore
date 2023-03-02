@@ -6,6 +6,14 @@ composer.*
 # Google Cloud console Client Secrets
 credentials.json
 
+# telegram bot creds
+
+token.json
+
+/__telegram/vendor
+
+/__telegram/composer.*
+
 # others
 others/
 
